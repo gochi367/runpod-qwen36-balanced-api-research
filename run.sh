@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+: "${API_KEY:=r}"
+
 echo "[1/8] Find llama-server"
 
 SERVER_BIN="/app/llama-server"
@@ -41,7 +43,7 @@ echo "MODEL_PATH=${MODEL_PATH}"
 
 echo "[3/8] Download GGUF from Hugging Face"
 
-python3 - <<'PY'
+python - <<'PY'
 from huggingface_hub import hf_hub_download
 import os
 
